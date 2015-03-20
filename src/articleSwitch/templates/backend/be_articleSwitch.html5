@@ -1,0 +1,33 @@
+<div id="articleSwitch-wrapper">
+    <form id="articleSwitch">
+        <label for="articleSwitchSelect"><?php echo $this->label ?></label><br>
+        <select class="tl_select tl_chosen" id="articleSwitchSelect">
+            <option value="-">-</option>
+            <?php foreach($this->articles as $key => $article): ?>
+                <option value="<?php echo $key ?>"><?php echo $article ?></option>
+            <?php endforeach; ?>
+
+        </select>
+    </form>
+</div>
+
+
+<script>
+
+    !(function() {
+
+        "use strict";
+
+        $('articleSwitch-wrapper')
+            .inject($('tl_buttons'))
+            .show();
+
+        $('articleSwitchSelect').addEvent('change', function(e) {
+            if(this.value != '-') {
+                location.href = this.value;
+            }
+        })
+
+    })();
+
+</script>
